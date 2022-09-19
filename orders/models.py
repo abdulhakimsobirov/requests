@@ -2,6 +2,7 @@ from django.db import models
 
 class Objects(models.Model):
     name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = ("Объект")
@@ -13,6 +14,7 @@ class Objects(models.Model):
 class Brigadir(models.Model):
     name = models.CharField(max_length=150)
     phone = models.CharField(max_length=9)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = ("Бригадир")
@@ -34,6 +36,7 @@ class Requests(models.Model):
     lunch = models.IntegerField(default=0, blank=True, null=True,  verbose_name='Обед')
     dinner = models.IntegerField(default=0, blank=True, null=True,verbose_name='Ужин')
     late_dinner = models.IntegerField(default=0, blank=True, null=True,verbose_name='Поздный ужин')
+    is_active = models.BooleanField(default=True)
     
 
     class Meta:

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap_icons %}
+
+
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase bg-primary" style="color: white;">
+    Бригадиры
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"
+        ><a href="#!" class="text-success"
+          ><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a
+      ></span>
+      <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">создать новый Бригадир</a>
+      <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">удаленный Бригадиры</a>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">ид</th>
+            <th class="text-center">Бригадир</th>
+            <th class="text-center">Тел. номер</th>
+            <th class="text-center">Редактировать</th>
+            <th class="text-center">Удалить</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for brigadir in brigadirs %}
+          <tr>
+            <td class="pt-3-half" contenteditable="false">{{ brigadir.id }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ brigadir.name }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ brigadir.phone }}</td>
+
+            {% comment %} <td class="pt-3-half">
+              <span class="table-up"
+                ><a href="#!" class="indigo-text"
+                  ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
+              ></span>
+              <span class="table-down"
+                ><a href="#!" class="indigo-text"
+                  ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
+              ></span>
+            </td> {% endcomment %}
+            <td>
+              <span class="table-remove"
+                ><a href={% url 'update_brigadir' brigadir.id %} type="button" class="btn btn-warning btn-rounded btn-sm my-0" >
+                  Редактировать{% bs_icon 'pencil' %}
+                  
+                </a></span>
+            </td>
+            
+            <td>
+              <span class="table-remove"
+                ><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" style="color: white">
+                  Удалить{% bs_icon 'trash' %}
+                </a></span>
+            </td>
+
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  {% endblock %}

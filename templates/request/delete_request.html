@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap_icons %}
+
+<p>Do you want to delete {{ requests }}</p>
+
+<form action="{% url 'delete_request' requests.id %}" method="POST">
+    	{% csrf_token %}
+
+        <input type="submit" value="Delete">
+
+</form>
+
+{% endblock %}

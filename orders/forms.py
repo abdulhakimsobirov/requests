@@ -1,10 +1,27 @@
-# from django import forms
-# from .models import Requests
+from dataclasses import field, fields
+from django import forms
+from .models import Requests, Objects, Brigadir
+# from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.models import User
 
-# class RequestsModelForm(forms.ModelForm):
+# class UserForm(UserCreationForm):
 #     class Meta:
-#         model = Requests
+#         model = User
+#         fields = ['username', 'email', 'password1', 'password2']
 
-#     def __init__(self, *args, **kwargs):
-#         forms.ModelForm.__init__(self, *args, **kwargs)
-#         self.fields['date'].queryset = Requests.avail.all()
+class ObjectsForm(forms.ModelForm):
+    class Meta:
+        model = Objects
+        fields = ['name']
+
+
+class BrigadirForm(forms.ModelForm):
+    class Meta:
+        model = Brigadir
+        fields = ['name', 'phone']
+
+
+class RequestsForm(forms.ModelForm):
+    class Meta:
+        model = Requests
+        fields = ['brigadir', 'object', 'lunch', 'dinner', 'late_dinner']

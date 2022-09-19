@@ -5,19 +5,17 @@ from import_export.admin import ImportExportModelAdmin
 
 
 class ObjectsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'is_active')
 
 class BrigadirAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'name', 'phone')
+    list_display = ('id', 'name', 'phone', 'is_active')
 
-class RAdmin(admin.StackedInline):
-    model = Requests
-    filter_horizontal = ('dinner', )
+
+
 
 class RequestsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = RAdmin
-    # 
-    list_display = ('id', 'date', 'brigadir', 'object', 'lunch', 'dinner', 'late_dinner', )
+    
+    list_display = ('id', 'date', 'brigadir', 'object', 'lunch', 'dinner', 'late_dinner', 'is_active' )
     
 
 
