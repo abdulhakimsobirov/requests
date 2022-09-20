@@ -3,19 +3,38 @@
 {% block content %}
 {% load bootstrap_icons %}
 
-<div class="main">
+<div class="container">
     <!-- Create a Form -->
+
+
     <form method="POST">
-        <!-- Security token by Django -->
         {% csrf_token %}
- 
-        <!-- form as paragraph -->
-        {{ requestForm.as_p }}
- 
+        <!-- Default input -->
+        <div class="form-group">
+          <label for="formGroupExampleInput">Бригадир</label>
+          {{ requestForm.brigadir }}
+        </div>
+        <!-- Default input -->
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Объект</label>
+          {{ requestForm.object }}
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput3">Обед</label>
+            {{ requestForm.lunch }}
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput4">Ужин</label>
+            {{ requestForm.dinner }}
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput5">Поздный ужин</label>
+            {{ requestForm.late_dinner }}
+          </div>
         <span class="table-remove">
-            <input type="submit"  class="btn btn-info btn-rounded btn-sm my-3" style="color:white" value="Cоздать" />
+            <input type="submit"  class="btn btn-info btn-lg btn" style="color:white" value="Cоздать" />
         </span>
-    </form>
+      </form>
  
 </div>
 

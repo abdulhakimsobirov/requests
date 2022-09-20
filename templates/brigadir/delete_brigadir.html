@@ -3,17 +3,16 @@
 {% block content %}
 {% load bootstrap_icons %}
 
-
-
 <div class="container">
 
     <form method="POST">
             {% csrf_token %}
-            <p> {{ requestForm }}</p>
-            {% comment %} {{ requestForm.is_active }}<br> {% endcomment %}
+            <p> {{ brigadirForm }}</p>
+            
             <input type="submit" class="btn btn-danger" value="Отправить">
 
     </form>
 
 </div>
+
 {% endblock %}

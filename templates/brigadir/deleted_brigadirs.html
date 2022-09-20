@@ -6,7 +6,7 @@
 
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase bg-primary" style="color: white;">
-    Бригадиры
+    Удаленные Бригадиры
   </h3>
   <div class="card-body">
     <div id="table" class="table-editable">
@@ -14,16 +14,16 @@
         ><a href="#!" class="text-success"
           ><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a
       ></span>
-      <a href="{% url 'create_brigadir' %}" type="submit" class="btn btn-info btn-lg btn">создать новый Бригадир</a>
-      <a href="{% url 'deleted_brigadirs' %}" type="submit" class="btn btn-info btn-lg btn">Удаленные Бригадиры</a>
+      {% comment %} <a href="{% url 'create_brigadir' %}" type="submit" class="btn btn-info btn-lg btn">создать новый Бригадир</a>
+      <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">удаленный Бригадиры</a> {% endcomment %}
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
           <tr>
             <th class="text-center">ид</th>
             <th class="text-center">Бригадир</th>
             <th class="text-center">Тел. номер</th>
-            <th class="text-center">Редактировать</th>
-            <th class="text-center">Удалить</th>
+            <th class="text-center">Востановить</th>
+            {% comment %} <th class="text-center">Удалить</th> {% endcomment %}
           </tr>
         </thead>
         <tbody>
@@ -45,18 +45,18 @@
             </td> {% endcomment %}
             <td>
               <span class="table-remove"
-                ><a href={% url 'update_brigadir' brigadir.id %} type="button" class="btn btn-warning btn-rounded btn-sm my-0" >
-                  Редактировать{% bs_icon 'pencil' %}
+                ><a href={% url 'delete_brigadir' brigadir.id %} type="button" class="btn btn-primary btn-rounded btn-sm my-0" >
+                  Востановить{% bs_icon 'pencil' %}
                   
                 </a></span>
             </td>
             
-            <td>
+            {% comment %} <td>
               <span class="table-remove"
                 ><a href={% url 'delete_brigadir' brigadir.id %} type="button" class="btn btn-danger btn-rounded btn-sm my-0" style="color: white">
                   Удалить{% bs_icon 'trash' %}
                 </a></span>
-            </td>
+            </td> {% endcomment %}
 
 
           </tr>

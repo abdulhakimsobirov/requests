@@ -3,7 +3,7 @@
 {% block content %}
 {% load bootstrap_icons %}
 
-<div class="main">
+<div class="container">
     <!-- Create a Form -->
     <form method="POST">
         <!-- Security token by Django -->
@@ -11,14 +11,15 @@
  
         <!-- form as paragraph -->
          
-        {{ requestForm.brigadir }}<br>
-        {{ requestForm.object }}<br>
+        {{ requestForm.as_p }}<br>
+        {% comment %} {{ requestForm.object }}<br>
         {{ requestForm.lunch }}<br>
         {{ requestForm.dinner }}<br>
-        {{ requestForm.late_dinner }}
+        {{ requestForm.late_dinner }}<br> {% endcomment %}
+        
  
         <span class="table-remove">
-            <input type="submit"  class="btn btn-info btn-rounded btn-sm my-0" style="color:white" value="Обновить"/>
+            <input type="submit"  class="btn btn-info btn-rounded btn-sm my-2" style="color:white" value="Обновить"/>
         </span>
 
     </form>

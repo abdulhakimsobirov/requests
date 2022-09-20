@@ -4,28 +4,19 @@
 {% load bootstrap_icons %}
 
 
-
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase bg-primary" style="color: white;">
-    Заявки
+    Удаленные Заявки
   </h3>
   
   <div class="card-body">
-    <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">Создать новая заявка</a>
-    <a href="{% url 'deleted_requests' %}" type="submit" class="btn btn-info btn-lg btn">Удаленные заявки</a>
+    {% comment %} <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">создать новый заявка</a>
+    <a href="{% url 'create_request' %}" type="submit" class="btn btn-info btn-lg btn">удаленный заявки</a> {% endcomment %}
     <div id="table" class="table-editable">
       <span class="table-add float-right mb-3 mr-2"
         ><a href="#!" class="text-success"
           ><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a
       ></span>
-      <form method='GET'>
-        <div class="md-form md-outline input-with-post-icon datepicker" id="accLabels">
-          {{ rfilter.form }}<br>
-
-          <input type="submit" value="Искать" class="btn btn-success bttn lg">
-          
-        </div>
-      </form>
 
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
@@ -38,8 +29,8 @@
             <th class="text-center">Ужин</th>
             <th class="text-center">Поздный Ужин</th>
             {% comment %} <th class="text-center">Sort</th> {% endcomment %}
-            <th class="text-center">Редактировать</th>
-            <th class="text-center">Удалить</th>
+            <th class="text-center">Востановить</th>
+            {% comment %} <th class="text-center">Удалить</th> {% endcomment %}
           </tr>
         </thead>
         <tbody>
@@ -64,18 +55,18 @@
             </td> {% endcomment %}
             <td>
               <span class="table-remove"
-                ><a href="{% url 'update_request' request.id %}" type="button" class="btn btn-warning btn-rounded btn-sm my-0"  >
-                  Редактировать{% bs_icon 'pencil' %}
+                ><a href="{% url 'delete_request' request.id %}" type="button" class="btn btn-primary btn-rounded btn-sm my-0"  >
+                    Востановить
                   
                 </a></span>
             </td>
             
-            <td>
+            {% comment %} <td>
               <span class="table-remove"
                 ><a href="{% url 'delete_request' request.id %}"  type="button" class="btn btn-danger btn-rounded btn-sm my-0" style="color: white">
                   Удалить{% bs_icon 'trash' %}
                 </a></span>
-            </td>
+            </td> {% endcomment %}
 
 
           </tr>
@@ -86,6 +77,5 @@
     </div>
   </div>
 </div>
-
 
   {% endblock %}

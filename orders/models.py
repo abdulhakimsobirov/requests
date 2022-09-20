@@ -1,8 +1,16 @@
 from django.db import models
 
+
+IS_ACTIVE = (
+    (1, 'Активный'),
+    # (2, 'Неактивный'),
+    (3, 'Удаленный'),
+)
+
+
 class Objects(models.Model):
-    name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=255, verbose_name='Название объекта')
+    is_active = models.IntegerField(choices=IS_ACTIVE, default='1', verbose_name='Активность')
 
     class Meta:
         verbose_name = ("Объект")
@@ -12,9 +20,9 @@ class Objects(models.Model):
         return self.name
 
 class Brigadir(models.Model):
-    name = models.CharField(max_length=150)
-    phone = models.CharField(max_length=9)
-    is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=150, verbose_name='Ф.И.О. Бригадира')
+    phone = models.CharField(max_length=9, verbose_name='Номер телефона')
+    is_active = models.IntegerField(choices=IS_ACTIVE, default='1', verbose_name='Активность')
 
     class Meta:
         verbose_name = ("Бригадир")
@@ -25,18 +33,14 @@ class Brigadir(models.Model):
 
 
 class Requests(models.Model):
-    TYPES = (
-        ('1', 'Обед'),
-        ('2', 'ужин'),
-        ('3', 'Позд ужин'),
-    )
+
     date = models.DateField(auto_now_add=True)
-    brigadir = models.ForeignKey(Brigadir, on_delete=models.CASCADE)
-    object = models.ForeignKey(Objects, on_delete=models.CASCADE)
+    brigadir = models.ForeignKey(Brigadir, on_delete=models.CASCADE, verbose_name='Бригадир')
+    object = models.ForeignKey(Objects, on_delete=models.CASCADE, verbose_name='Объект')
     lunch = models.IntegerField(default=0, blank=True, null=True,  verbose_name='Обед')
     dinner = models.IntegerField(default=0, blank=True, null=True,verbose_name='Ужин')
     late_dinner = models.IntegerField(default=0, blank=True, null=True,verbose_name='Поздный ужин')
-    is_active = models.BooleanField(default=True)
+    is_active = models.IntegerField(choices=IS_ACTIVE, default='1', verbose_name='Активность')
     
 
     class Meta:

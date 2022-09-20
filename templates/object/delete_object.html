@@ -9,11 +9,11 @@
 
     <form method="POST">
             {% csrf_token %}
-            <p> {{ requestForm }}</p>
-            {% comment %} {{ requestForm.is_active }}<br> {% endcomment %}
+            <p> {{ objectForm }}</p>
             <input type="submit" class="btn btn-danger" value="Отправить">
 
     </form>
 
 </div>
+
 {% endblock %}
