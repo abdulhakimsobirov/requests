@@ -50,11 +50,16 @@ def menu(request):
 def requests(request):
     requests = Requests.objects.filter(is_active=1)
 
+
     rfilter = RequestFilter(request.GET, queryset=requests)
     requests = rfilter.qs
+    print(requests)
+    a = dict(rfilter.data)
+
+    print(dict(a))
 
 
-    context = {'requests': requests,'rfilter': rfilter}
+    context = {'requests': requests, 'rfilter': rfilter, 'a': a}
     
     return render(request, 'request/request.html', context=context)
 

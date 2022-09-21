@@ -19,7 +19,7 @@
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
           <tr>
-            <th class="text-center">ид</th>
+            <th class="text-center">Номер</th>
             <th class="text-center">Объект</th>
             <th class="text-center">Редактировать</th>
             <th class="text-center">Удалить</th>
@@ -28,7 +28,7 @@
         <tbody>
           {% for object in objects %}
           <tr>
-            <td class="pt-3-half" contenteditable="false">{{ object.id }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ forloop.counter }}</td>
             <td class="pt-3-half" contenteditable="false">{{ object.name }}</td>
 
             {% comment %} <td class="pt-3-half">

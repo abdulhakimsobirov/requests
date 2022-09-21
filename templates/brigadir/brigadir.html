@@ -19,7 +19,7 @@
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
           <tr>
-            <th class="text-center">ид</th>
+            <th class="text-center">Номер</th>
             <th class="text-center">Бригадир</th>
             <th class="text-center">Тел. номер</th>
             <th class="text-center">Редактировать</th>
@@ -29,7 +29,7 @@
         <tbody>
           {% for brigadir in brigadirs %}
           <tr>
-            <td class="pt-3-half" contenteditable="false">{{ brigadir.id }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ forloop.counter }}</td>
             <td class="pt-3-half" contenteditable="false">{{ brigadir.name }}</td>
             <td class="pt-3-half" contenteditable="false">{{ brigadir.phone }}</td>
 
