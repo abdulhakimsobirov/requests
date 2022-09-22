@@ -21,6 +21,8 @@
           <tr>
             <th class="text-center">Номер</th>
             <th class="text-center">Объект</th>
+            <th class="text-center">Бригадир объекта</th>
+            <th class="text-center">Номер бригадира</th>
             <th class="text-center">Редактировать</th>
             <th class="text-center">Удалить</th>
           </tr>
@@ -30,6 +32,8 @@
           <tr>
             <td class="pt-3-half" contenteditable="false">{{ forloop.counter }}</td>
             <td class="pt-3-half" contenteditable="false">{{ object.name }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ object.brigadir }}</td>
+            <td class="pt-3-half" contenteditable="false">{{ object.phone }}</td>
 
             {% comment %} <td class="pt-3-half">
               <span class="table-up"

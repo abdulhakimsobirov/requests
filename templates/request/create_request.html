@@ -10,10 +10,10 @@
     <form method="POST">
         {% csrf_token %}
         <!-- Default input -->
-        <div class="form-group">
+        {% comment %} <div class="form-group">
           <label for="formGroupExampleInput">Бригадир</label>
           {{ requestForm.brigadir }}
-        </div>
+        </div> {% endcomment %}
         <!-- Default input -->
         <div class="form-group">
           <label for="formGroupExampleInput2">Объект</label>

@@ -8,16 +8,7 @@ IS_ACTIVE = (
 )
 
 
-class Objects(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название объекта')
-    is_active = models.IntegerField(choices=IS_ACTIVE, default='1', verbose_name='Активность')
 
-    class Meta:
-        verbose_name = ("Объект")
-        verbose_name_plural = ("Объекты")
-
-    def __str__(self):
-        return self.name
 
 class Brigadir(models.Model):
     name = models.CharField(max_length=150, verbose_name='Ф.И.О. Бригадира')
@@ -32,10 +23,25 @@ class Brigadir(models.Model):
         return self.name
 
 
+class Objects(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Название объекта')
+    brigadir = models.CharField(max_length=255, verbose_name='Ф.И.О. Бригадира')
+    phone = models.CharField(max_length=9, verbose_name='Номер телефона')
+    is_active = models.IntegerField(choices=IS_ACTIVE, default='1', verbose_name='Активность')
+
+
+    class Meta:
+        verbose_name = ("Объект")
+        verbose_name_plural = ("Объекты")
+
+    def __str__(self):
+        return self.name
+
+
 class Requests(models.Model):
 
     date = models.DateField(auto_now_add=True)
-    brigadir = models.ForeignKey(Brigadir, on_delete=models.CASCADE, verbose_name='Бригадир')
+   
     object = models.ForeignKey(Objects, on_delete=models.CASCADE, verbose_name='Объект')
     lunch = models.IntegerField(default=0, blank=True, null=True,  verbose_name='Обед')
     dinner = models.IntegerField(default=0, blank=True, null=True,verbose_name='Ужин')

@@ -11,7 +11,7 @@
         {% csrf_token %}
         <div class="form-group">
           
-          {{ objectForm }}
+          {{ objectForm.as_p }}
           
         </div>
         <span class="table-remove">

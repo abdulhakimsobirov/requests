@@ -5,7 +5,7 @@ from import_export.admin import ImportExportModelAdmin
 
 
 class ObjectsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'name', 'is_active')
+    list_display = ('id', 'name', 'brigadir', 'is_active')
 
 class BrigadirAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'name', 'phone', 'is_active')
@@ -15,7 +15,7 @@ class BrigadirAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 class RequestsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     
-    list_display = ('id', 'date', 'brigadir', 'object', 'lunch', 'dinner', 'late_dinner', 'is_active' )
+    list_display = ('id', 'date', 'object', 'lunch', 'dinner', 'late_dinner', 'is_active' )
     
 
 

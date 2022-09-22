@@ -42,16 +42,18 @@
 
       <table class="table table-bordered table-responsive-md table-striped text-center">
 
-        {% if rfilter.form %}
+        
               <thead>
                 <tr>
                   <th class="text-center">Номер</th>
                   <th class="text-center">Дата</th>
-                  <th class="text-center">Бригадир</th>
                   <th class="text-center">Объект</th>
+                  <th class="text-center">Бригадир</th>
+                  <th class="text-center">Номер бригадир</th>
+                  
                   <th class="text-center">Обед</th>
                   <th class="text-center">Ужин</th>
-                  <th class="text-center">Поздный Ужин</th>
+                  <th class="text-center">Поздний Ужин</th>
                   <th class="text-center">Редактировать</th>
                   <th class="text-center">Удалить</th>
                 </tr>
@@ -64,8 +66,10 @@
                 <tr>
                   <td class="pt-3-half" contenteditable="false">{{ forloop.counter }}</td>
                   <td class="pt-3-half" contenteditable="false">{{ request.date }}</td>
-                  <td class="pt-3-half" contenteditable="false">{{ request.brigadir }} <br> {{ request.brigadir.phone }}</</td>
                   <td class="pt-3-half" contenteditable="false">{{ request.object }}</td>
+                  <td class="pt-3-half" contenteditable="false">{{ request.object.brigadir }}</td>
+                  <td class="pt-3-half" contenteditable="false">{{ request.object.phone }}</td>
+                  
                   <td class="pt-3-half" contenteditable="false">{{ request.lunch }}</td>
                   <td class="pt-3-half" contenteditable="false">{{ request.dinner }}</td>
                   <td class="pt-3-half" contenteditable="false">{{ request.late_dinner }}</td>
@@ -79,10 +83,10 @@
                         ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
                     ></span>
                   </td> {% endcomment %}
-                  {% comment %} <td>
+                   <td>
                     <span class="table-remove"
                       ><a href="{% url 'update_request' request.id %}" type="button" class="btn btn-warning btn-rounded btn-sm my-0"  >
-                        Редактировать{% bs_icon 'pencil' %}
+                        Редактировать
                         
                       </a></span>
                   </td>
@@ -90,9 +94,9 @@
                   <td>
                     <span class="table-remove"
                       ><a href="{% url 'delete_request' request.id %}"  type="button" class="btn btn-danger btn-rounded btn-sm my-0" style="color: white">
-                        Удалить{% bs_icon 'trash' %}
+                        Удалить
                       </a></span>
-                  </td> {% endcomment %}
+                  </td> 
 
 
                 </tr>
@@ -100,67 +104,8 @@
 
               </tbody>
 
-        {% else %}
-            <thead>
-              <tr>
-                <th class="text-center">Номер</th>
-                <th class="text-center">Дата</th>
-                <th class="text-center">Бригадир</th>
-                <th class="text-center">Объект</th>
-                <th class="text-center">Обед</th>
-                <th class="text-center">Ужин</th>
-                <th class="text-center">Поздный Ужин</th>
-                {% comment %} <th class="text-center">Sort</th> {% endcomment %}
-                <th class="text-center">Редактировать</th>
-                <th class="text-center">Удалить</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              {% for request in requests %}
 
-                  
-              <tr>
-                <td class="pt-3-half" contenteditable="false">{{ forloop.counter }}</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.date }}</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.brigadir }} <br> {{ request.brigadir.phone }}</</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.object }}</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.lunch }}</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.dinner }}</td>
-                <td class="pt-3-half" contenteditable="false">{{ request.late_dinner }}</td>
-                {% comment %} <td class="pt-3-half">
-                  <span class="table-up"
-                    ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                  ></span>
-                  <span class="table-down"
-                    ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                  ></span>
-                </td> {% endcomment %}
-                <td>
-                  <span class="table-remove"
-                    ><a href="{% url 'update_request' request.id %}" type="button" class="btn btn-warning btn-rounded btn-sm my-0"  >
-                      Редактировать{% bs_icon 'pencil' %}
-                      
-                    </a></span>
-                </td>
-                
-                <td>
-                  <span class="table-remove"
-                    ><a href="{% url 'delete_request' request.id %}"  type="button" class="btn btn-danger btn-rounded btn-sm my-0" style="color: white">
-                      Удалить{% bs_icon 'trash' %}
-                    </a></span>
-                </td>
-
-
-              </tr>
-              {% endfor %}
-
-            </tbody>
-
-        
-        {% endif %}
+      
       </table>
     </div>
   </div>
